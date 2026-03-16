@@ -80,7 +80,6 @@ async function login() {
 }
 
 async function fetchTodaySMS() {
-  // ✅ Sirf aaj ki date
   const today = new Date().toISOString().split("T")[0];
 
   console.log("============================================================");
@@ -122,7 +121,7 @@ async function fetchTodaySMS() {
   try {
     data = JSON.parse(raw);
   } catch {
-    console.error("Response parse error:", raw.substring(0, 300));
+    console.error("Parse error:", raw.substring(0, 300));
     process.exit(1);
   }
 
