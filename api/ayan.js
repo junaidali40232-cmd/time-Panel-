@@ -8,7 +8,7 @@ const router = express.Router();
 const CONFIG = {
   baseUrl: "http://www.timesms.net",
   username: "AyanPak7",
-  password: "Ayan7860#3#",
+  password: "Ayan7860#3",
   userAgent: "Mozilla/5.0 (Linux; Android 13; V2040 Build/TP1A.220624.014) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.79 Mobile Safari/537.36"
 };
 
@@ -160,15 +160,16 @@ async function getNumbers() {
   return fixNumbers(safeJSON(data));
 }
 
-/* GET SMS - USING YOUR WIDE RANGE PATTERN */
+/* GET SMS - SIRF AAJ KI DATE */
 async function getSMS() {
   await login();
 
-  // Wide date range (your pattern)
-  const startDate = "2026-03-07";
-  const endDate = "2099-12-31";
+  // âś… Sirf aaj ki SMS
+  const today = new Date().toISOString().split("T")[0];
+  const startDate = today;
+  const endDate = today;
 
-  console.log("[SMS] Wide range:", startDate, "to", endDate);
+  console.log("[SMS] Aaj ki date:", today);
 
   const params = [
     `fdate1=${encodeURIComponent(startDate + " 00:00:00")}`,
@@ -178,14 +179,13 @@ async function getSMS() {
     `fnum=`,
     `fcli=`,
     `fg=0`,
-    `iDisplayLength=2000`  // your suggested value
+    `iDisplayLength=2000`
   ].join('&');
 
   const urlPath = `/agent/res/data_smscdr.php?${params}`;
 
   console.log("[SMS] Full URL:", CONFIG.baseUrl + urlPath);
 
-  // Load parent page first
   try {
     await makeRequest("GET", "/agent/SMSCDRReports", null, {
       Referer: `${CONFIG.baseUrl}/agent/`
@@ -203,7 +203,6 @@ async function getSMS() {
 
   console.log("[SMS RAW PREVIEW]", data.substring(0, 1000));
 
-  // Retry if blocked
   if (data.includes("Direct Script Access") || data.includes("Please sign in") || data.includes("login")) {
     console.log("[SMS] Blocked - retrying...");
     await login();
