@@ -7,8 +7,8 @@ const router = express.Router();
 
 const CONFIG = {
   baseUrl: "http://www.timesms.net",
-  username: "Junaidal",
-  password: "Junaidali",
+  username: "Junaidaliniz",
+  password: "Junaidaliniz",
   userAgent: "Mozilla/5.0 (Linux; Android 13; V2040 Build/TP1A.220624.014) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.7632.79 Mobile Safari/537.36"
 };
 
