@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const ayan = require("./api/ayan");
 const kumail = require("./api/kumail");
 const hjunaid = require("./api/hjunaid");
-const hjunaid = require("./api/junaid");
+const junaid = require("./api/junaid");
 
 
 // --- ROUTES ---
