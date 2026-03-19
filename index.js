@@ -6,12 +6,14 @@ const PORT = process.env.PORT || 3000;
 const ayan = require("./api/ayan");
 const kumail = require("./api/kumail");
 const hjunaid = require("./api/hjunaid");
+const hjunaid = require("./api/junaid");
 
 
 // --- ROUTES ---
 app.use("/api/ayan", ayan);
 app.use("/api/kumail", kumail);
 app.use("/api/hjunaid", hjunaid);
+app.use("/api/junaid", junaid);
 
 
 // --- HEALTH CHECK ---
